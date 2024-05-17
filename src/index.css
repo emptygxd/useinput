@@ -26,7 +26,6 @@ div {
   gap: 15px;
   align-items: center;
   padding: 15px;
-  border: var(--primary-color) 1px solid;
 }
 
 input {
