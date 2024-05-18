@@ -1,19 +1,22 @@
-import { useInput } from "./shared/hooks/useInput";
+import { useInput } from './shared/hooks/useInput';
 
 function App() {
-  const username = useInput("");
+  const { value, onChangeValue, onBlur, error, validationError, onClearValue } =
+    useInput('');
   return (
     <div>
       <h1>useInput</h1>
       <input
-        type="text"
-        value={username.value}
-        onChange={username.onChange}
-        onBlur={username.onBlur}
+        value={value}
+        onChange={onChangeValue}
+        onBlur={onBlur}
         placeholder="Enter your username"
+        className={error || validationError ? 'errorInput' : ''}
       />
-      {username.error && <span style={{ color: "red" }}>{username.error}</span>}
-      <button onClick={username.clear}>Очистить</button>
+      {(error || validationError) && (
+        <span className="error">{error || validationError}</span>
+      )}
+      <button onClick={onClearValue}>Очистить</button>
     </div>
   );
 }
